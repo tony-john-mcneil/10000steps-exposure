@@ -18,10 +18,11 @@
         
         $('tr.memberblock div').each(function() {
             var liFind = $(this).find("li");
-            var userID = liFind.parent().parent().attr('id');
+            var liParent = liFind.parent();
+            var userID = liParent.parent().attr('id');
             
             if (liFind.length == 1)
-                $(this).find("li").parent().prepend("<li>"+userID+"</li>")
+                liParent.prepend("<li>"+userID+"</li>")
         });
         
     }
