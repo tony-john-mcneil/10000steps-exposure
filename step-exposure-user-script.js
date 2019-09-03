@@ -10,13 +10,22 @@
 // @grant        none
 // ==/UserScript==
 (() => {
-	"use strict";
+    "use strict";
 
-	function run() {
-		console.info("performing step exposure...");
+    function run() {
+        console.info("performing step exposure...");
         $('tr.memberblock').css({ display: "table-row" });
-	}
+        
+        $('tr.memberblock div').each(function() {
+            var liFind = $(this).find("li");
+            var userID = liFind.parent().parent().attr('id');
+            
+            if (liFind.length == 1)
+                $(this).find("li").parent().prepend("<li>"+userID+"</li>")
+        });
+        
+    }
 
-	run();
+    run();
 
 })();
